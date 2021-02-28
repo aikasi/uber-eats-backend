@@ -4,7 +4,6 @@ import { Inject, Injectable } from '@nestjs/common';
 import got from 'got/dist/source';
 import { CONFIG_OPTIONS } from '../common/common.constants';
 import { EmailVar, MailModuleOptions } from './mail.interfaces';
-import { error } from 'console';
 
 @Injectable()
 export class MailService {
