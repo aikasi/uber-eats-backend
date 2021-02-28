@@ -22,23 +22,23 @@ export class Restaurant {
   @Length(5)
   name: string;
 
-  @Field(() => Boolean, { defaultValue: true }) //graphql
+  @Field(() => Boolean, { nullable: true, defaultValue: true }) //graphql
   @Column({ default: true }) //database
   @IsOptional() //dto
   @IsBoolean()
   isVegan: boolean;
 
-  @Field(() => String)
+  @Field(() => String, { defaultValue: 'Null' })
   @Column()
   @IsString()
   address: string;
 
-  @Field(() => String)
+  @Field(() => String, { defaultValue: 'Null' })
   @Column()
   @IsString()
   ownerName: string;
 
-  @Field(() => String)
+  @Field(() => String, { defaultValue: 'Null' })
   @Column()
   @IsString()
   categoryName: string;
