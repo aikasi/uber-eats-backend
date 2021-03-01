@@ -34,7 +34,6 @@ export class UsersService {
     try {
       const exists = await this.users.findOne({ email });
       if (exists) {
-        // make error
         return { ok: false, error: 'There is a user with that email already' };
       }
       const user = await this.users.save(
@@ -72,7 +71,6 @@ export class UsersService {
           error: 'wrong passdword',
         };
       }
-      console.log(user);
       const token = this.jwtService.sign(user.id);
       return {
         ok: true,
@@ -81,20 +79,18 @@ export class UsersService {
     } catch (error) {
       return {
         ok: false,
-        error,
+        error: "Can't log user in",
       };
     }
   }
 
   async findById(id: number): Promise<UserProfileOutput> {
     try {
-      const user = await this.users.findOne({ id });
-      if (user) {
-        return {
-          ok: true,
-          user,
-        };
-      }
+      const user = await this.users.findOneOrFail({ id });
+      return {
+        ok: true,
+        user,
+      };
     } catch (error) {
       return { ok: false, error: 'User Not Found' };
     }
@@ -135,7 +131,6 @@ export class UsersService {
       );
       if (verification) {
         verification.user.verified = true;
-        console.log(verification.user);
         await this.users.save(verification.user);
         await this.verification.delete(verification.id);
         return { ok: true };
@@ -144,7 +139,7 @@ export class UsersService {
     } catch (error) {
       return {
         ok: false,
-        error,
+        error: 'Could not verify email.',
       };
     }
   }
