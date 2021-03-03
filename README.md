@@ -11,3 +11,9 @@ The Backend of uber Eatss Clone
 - email
 - password
 - role(client|owner|delivery)
+
+## Restaurant Model
+- name
+- category
+- address
+- coverImage
