@@ -12,16 +12,11 @@ import { AuthUser } from '../auth/auto-user.decorator';
 import { UserProfileInput, UserProfileOutput } from './dtos/user-profile.dto';
 import { EditProfileInput, EditProfileOutput } from './dtos/edit-profile.dto';
 import { VerifyEmailInput, VerifyEmailOutput } from './dtos/verify-email.dto';
+import { Role } from 'src/auth/role.decorator';
 
 @Resolver(() => User)
 export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
-
-  @Query(() => User)
-  @UseGuards(AuthGuard)
-  me(@AuthUser() authUser: User) {
-    return authUser;
-  }
 
   @Mutation(() => CreateAccountOutput)
   async createAccount(
@@ -35,16 +30,22 @@ export class UsersResolver {
     return this.usersService.login(loginInput);
   }
 
-  @UseGuards(AuthGuard)
+  @Query(() => User)
+  @Role(['any'])
+  me(@AuthUser() authUser: User) {
+    return authUser;
+  }
+
   @Query(() => UserProfileOutput)
+  @Role(['any'])
   async userProfile(
     @Args() userProfileInput: UserProfileInput,
   ): Promise<UserProfileOutput> {
     return this.usersService.findById(userProfileInput.userId);
   }
 
-  @UseGuards(AuthGuard)
   @Mutation(() => EditProfileOutput)
+  @Role(['any'])
   async editProfile(
     @AuthUser() authUser: User,
     @Args('input') editProfileInput: EditProfileInput,

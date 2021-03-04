@@ -18,13 +18,14 @@ The Backend of uber Eatss Clone
 - address
 - coverImage
 
+- Edit Restaurant
+- Delete Restaurant
+- 
 - See Categpories
 - See Restaurants by Category (pagination)
 - See Restaurants (pagination)
 - See Resturant
-
-- Edit Restaurant
-- Delete Restaurant
+- Search Restaurant
 
 - Create Dish
 - Edit Dish
