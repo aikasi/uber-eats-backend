@@ -1,4 +1,3 @@
-import { SetMetadata } from '@nestjs/common';
 import {
   Args,
   Int,
@@ -10,7 +9,7 @@ import {
 } from '@nestjs/graphql';
 import { AuthUser } from 'src/auth/auto-user.decorator';
 import { Role } from 'src/auth/role.decorator';
-import { User, UserRole } from 'src/users/entities/user.entity';
+import { User } from 'src/users/entities/user.entity';
 import { AllCategoriesOutput } from './dtos/all-categories.dto';
 import { CategoryInput, CateogryOutput } from './dtos/category.dto';
 import {

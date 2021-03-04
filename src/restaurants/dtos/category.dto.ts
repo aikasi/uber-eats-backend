@@ -1,5 +1,4 @@
-import { ArgsType, Field, InputType, ObjectType } from '@nestjs/graphql';
-import { CoreOutput } from 'src/common/dtos/output.dto';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import {
   PaginationInput,
   PaginationOutput,
