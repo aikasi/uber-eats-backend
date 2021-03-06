@@ -34,6 +34,9 @@ The Backend of uber Eatss Clone
 ## Orders CRUD
 - Order CRUD
 - Order Subscription(Owner, Customer, Delivery)
+    - Pending Orders (Owner) (s:newOrder) (t: createOrder(newOrder))
+    - order status (customer,Delivery,Owner) (s: orderUpdate) (t: editOrder(orderUpdate))
+    - Pending Pickup Order (Delivery) (s:orderUpdate) (t: editOrder(orderUpdate))
 
 ## Payments
 - Payments ( CRON )
